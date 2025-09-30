@@ -1,5 +1,6 @@
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
+import "./PokemonList.css";
 
 const PokemonCard = () => {
   return (
