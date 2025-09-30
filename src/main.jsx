@@ -1,14 +1,19 @@
 import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
 import { createRoot } from 'react-dom/client'
+import { Provider } from "react-redux";
 import './index.css'
 import App from './App.jsx'
-import { pokemonsReducer } from './reducers/pokemons.js'
-import { Provider } from 'react-redux'
-import { legacy_createStore as createStore } from 'redux'
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
+import { pokemonsReducer } from './reducers/pokemons.js';
 
-const store = createStore(pokemonsReducer);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-createRoot(document.getElementById('root')).render(
+const store = createStore(
+  pokemonsReducer
+)
+
+root.render(
   <StrictMode>
     <Provider store={store}>
       <App />

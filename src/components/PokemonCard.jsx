@@ -2,12 +2,18 @@ import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 import "./PokemonList.css";
 
-const PokemonCard = () => {
+const PokemonCard = ({
+	name,
+	image,
+	types,
+	id,
+	favorite,
+}) => {
   return (
     <Card
-        style={{ width: 250}}
-        title="Ditto"
-        cover={<img src="" alt="Ditto" />}
+        id={id}
+			  title={name}
+			  cover={image && <img src={image.front_default} alt={name} />}
     >
         <Meta description="fire, magic" />
     </Card>
