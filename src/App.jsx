@@ -10,8 +10,8 @@ import { setLoading, setPokemons } from './actions';
 
 function App() {
 
-  const pokemons = useSelector(state => state.pokemons);
-  const loading = useSelector(state => state.loading);
+  const pokemons = useSelector(state => state.data.pokemons);
+  const loading = useSelector(state => state.ui.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
