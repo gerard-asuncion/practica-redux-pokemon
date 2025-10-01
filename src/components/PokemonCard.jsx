@@ -1,5 +1,6 @@
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
+import StarButton from "./StarButton";
 import "./PokemonList.css";
 
 const PokemonCard = ({
@@ -14,6 +15,9 @@ const PokemonCard = ({
         id={id}
 			  title={name}
 			  cover={image && <img src={image.front_default} alt={name} />}
+        extra={
+				<StarButton isFavorite={favorite ?? false} />
+			}
     >
         <Meta description="fire, magic" />
     </Card>
