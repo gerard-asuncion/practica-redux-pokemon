@@ -9,13 +9,19 @@ const initialState = {
 export const fetchPokemonWithDetails = createAsyncThunk(
     'data/fetchPokemonWithDetails',
     async (_, {dispatch}) => {
-        dispatch(setLoading(true));
-        const pokemonsRes = await getPokemon();
-        const pokemonsDetailed = await Promise.all(
-            pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
-        );
-        dispatch(setPokemons(pokemonsDetailed));
-        dispatch(setLoading(false));
+        dispatch(setLoading(true));     
+        try {
+            const pokemonsRes = await getPokemon();
+            const pokemonsDetailed = await Promise.all(
+                pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
+            );
+            dispatch(setPokemons(pokemonsDetailed));
+
+        } catch (error) {
+            console.error("No s'han pogut obtenir els detalls dels Pokémon:", error);
+        } finally {
+            dispatch(setLoading(false));
+        }
     }
 )
 
